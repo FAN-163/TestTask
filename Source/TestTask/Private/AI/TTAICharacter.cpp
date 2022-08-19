@@ -1,6 +1,7 @@
 // Test task
 
 #include "AI/TTAICharacter.h"
+#include "GameFramework/Actor.h"
 
 ATTAICharacter::ATTAICharacter()
 {

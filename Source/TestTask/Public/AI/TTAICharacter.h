@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "TTAICharacter.generated.h"
 
+class UBehaviorTree;
+
 UCLASS()
 class TESTTASK_API ATTAICharacter : public ACharacter
 {
@@ -14,6 +16,12 @@ class TESTTASK_API ATTAICharacter : public ACharacter
 public:
     ATTAICharacter();
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI")
+    UBehaviorTree* BehaviorTreeAsset;
+
+    FVector GetStartPoint() const;
+    FVector GetEndPoint() const;
+
 protected:
     virtual void BeginPlay() override;
 
@@ -21,4 +29,8 @@ public:
     virtual void Tick(float DeltaTime) override;
 
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private: 
+    FVector StartPoint;
+    FVector EndPoint;
 };

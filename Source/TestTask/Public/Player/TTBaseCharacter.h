@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "TTBaseCharacter.generated.h"
 
+class UCameraComponent;
+
+
 UCLASS()
 class TESTTASK_API ATTBaseCharacter : public ACharacter
 {
@@ -15,6 +18,9 @@ public:
     ATTBaseCharacter();
 
 protected:
+    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+    UCameraComponent* CameraComponent;
+
     virtual void BeginPlay() override;
 
 public:
