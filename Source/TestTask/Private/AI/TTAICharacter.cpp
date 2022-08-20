@@ -5,6 +5,10 @@
 
 ATTAICharacter::ATTAICharacter()
 {
+    AutoPossessAI = EAutoPossessAI::Disabled;
+
+    bUseControllerRotationYaw = false;
+
     PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -21,4 +25,14 @@ void ATTAICharacter::Tick(float DeltaTime)
 void ATTAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void ATTAICharacter::SetStartPoint(FVector StartedPoint) 
+{
+    this->StartPoint = StartPoint;
+}
+
+void ATTAICharacter::SetEndPoint(FVector EndedPoint) 
+{
+    this->EndPoint = EndPoint;
 }

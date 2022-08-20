@@ -10,4 +10,6 @@ UCLASS()
 class TESTTASK_API ATTAIController : public AAIController
 {
     GENERATED_BODY()
+
+
 };

@@ -7,6 +7,9 @@
 #include "TTGameField.generated.h"
 
 class UTTGameFieldSpawnerComponent;
+class ATTAIController;
+class ATTAICharacter;
+
 
 UCLASS()
 class TESTTASK_API ATTGameField : public AActor
@@ -16,19 +19,25 @@ class TESTTASK_API ATTGameField : public AActor
 public:
     ATTGameField();
 
-    UFUNCTION()
-    void SpawnUnit(AActor* StartPoint, AActor* Endpoint, int Type) const;
+    UFUNCTION(BlueprintCallable, Category = "GameField")
+    void SpawnUnit();
 
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Start & End Points")
     TArray<AActor*> StartPoints;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Start & End Points")
-    TArray<AActor*> EndtPoints;
+    TArray<AActor*> EndPoints;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
     UTTGameFieldSpawnerComponent* GameFieldSpawnerComponent;
+    
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
+    TSubclassOf<ATTAIController> AIControllerClass;
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
+    TSubclassOf<ATTAICharacter> AICharacterClass;
+    
     virtual void BeginPlay() override;
 
 public:
