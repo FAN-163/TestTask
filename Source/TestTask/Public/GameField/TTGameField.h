@@ -20,7 +20,7 @@ public:
     ATTGameField();
 
     UFUNCTION(BlueprintCallable, Category = "GameField")
-    void SpawnUnit();
+    void SpawnUnit(int32 inpNumberNest);
 
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Start & End Points")
