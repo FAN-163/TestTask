@@ -6,10 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "TTGameField.generated.h"
 
-class UTTGameFieldSpawnerComponent;
-class ATTAIController;
 class ATTAICharacter;
-
 
 UCLASS()
 class TESTTASK_API ATTGameField : public AActor
@@ -28,12 +25,6 @@ protected:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Start & End Points")
     TArray<AActor*> EndPoints;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
-    UTTGameFieldSpawnerComponent* GameFieldSpawnerComponent;
-    
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
-    TSubclassOf<ATTAIController> AIControllerClass;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
     TSubclassOf<ATTAICharacter> AICharacterClass;

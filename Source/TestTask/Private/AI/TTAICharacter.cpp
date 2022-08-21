@@ -27,12 +27,16 @@ void ATTAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void ATTAICharacter::SetStartPoint(FVector StartedPoint) 
+void ATTAICharacter::SetStartPoint(FVector StartedPoint)
 {
-    this->StartPoint = StartPoint;
+    StartPoint = StartedPoint;
 }
 
-void ATTAICharacter::SetEndPoint(FVector EndedPoint) 
+void ATTAICharacter::SetEndPoint(FVector EndedPoint)
 {
-    this->EndPoint = EndPoint;
+    EndPoint = EndedPoint;
+}
+void ATTAICharacter::SetNubberType(int32 Type)
+{
+    NumberType = Type;
 }

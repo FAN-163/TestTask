@@ -19,11 +19,13 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI")
     UBehaviorTree* BehaviorTreeAsset;
 
-    //FVector GetStartPoint() const;
-    //FVector GetEndPoint() const;
+    FVector GetStartPoint() const { return StartPoint; }
+    FVector GetEndPoint() const { return EndPoint; }
+    int32 GetNumberType() const { return NumberType; }
 
     void SetStartPoint(FVector StartPoint);
     void SetEndPoint(FVector EndPoint);
+    void SetNubberType(int32 NumberType);
 
 protected:
     virtual void BeginPlay() override;
@@ -36,4 +38,5 @@ public:
 private: 
     FVector StartPoint;
     FVector EndPoint;
+    int32 NumberType;
 };
