@@ -19,24 +19,32 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AI")
     UBehaviorTree* BehaviorTreeAsset;
 
-    FVector GetStartPoint() const { return StartPoint; }
-    FVector GetEndPoint() const { return EndPoint; }
+    void SetStartPoint(const FVector& StartedPoint) { StartPoint = StartedPoint; }
+    void SetEndPoint(FVector& EndedPoint) { EndPoint = EndedPoint; }
+    void SetNumberType(int32& Type) { NumberType = Type; }
+
+    UFUNCTION(BlueprintCallable, Category = "AICharacter")
     int32 GetNumberType() const { return NumberType; }
 
-    void SetStartPoint(FVector StartPoint);
-    void SetEndPoint(FVector EndPoint);
-    void SetNubberType(int32 NumberType);
+    UFUNCTION(BlueprintCallable, Category = "AICharacter")
+    FVector GetStartPoint() const { return StartPoint; }
 
-protected:
-    virtual void BeginPlay() override;
+    UFUNCTION(BlueprintCallable, Category = "AICharacter")
+    FVector GetEndPoint() const { return EndPoint; }
 
-public:
     virtual void Tick(float DeltaTime) override;
 
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-private: 
+protected:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
     FVector StartPoint;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
     FVector EndPoint;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
     int32 NumberType;
+
+    virtual void BeginPlay() override;
 };

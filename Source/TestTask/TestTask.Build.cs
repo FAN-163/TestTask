@@ -12,6 +12,15 @@ public class TestTask : ModuleRules
 
         PrivateDependencyModuleNames.AddRange(new string[] { });
 
+        PublicIncludePaths.AddRange(new string[]
+        {
+            "TestTask/Public",
+            "TestTask/Public/AI",
+            "TestTask/Public/AI/Decorators",
+            "TestTask/Public/UI",
+            "TestTask/Public/GameField",
+            "TestTask/Public/Player"
+        });
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 

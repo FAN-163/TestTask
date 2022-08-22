@@ -4,6 +4,9 @@
 #include "AI/TTAICharacter.h"
 #include "AIController.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogCharacter, All, All)
+
+
 ATTGameField::ATTGameField() {}
 
 void ATTGameField::BeginPlay()
@@ -20,12 +23,18 @@ void ATTGameField::SpawnUnit(int32 inpNumberNest)
 {
     if (!GetWorld()) return;
 
+    FVector StartPoint = StartPoints[inpNumberNest]->GetActorLocation();
+    FVector EndPoint = EndPoints[inpNumberNest]->GetActorLocation();
+    int32 NumberNest = inpNumberNest;
+    
+
     FActorSpawnParameters SpawnParams;
+    const auto TTAICharacter = Cast<ATTAICharacter>(GetWorld()->SpawnActor(AICharacterClass));
+ 
+    if (!TTAICharacter) return;
 
-    const auto TTAICharacter =
-        GetWorld()->SpawnActor<ATTAICharacter>(AICharacterClass, StartPoints[inpNumberNest]->GetTransform(), SpawnParams);
-
-    TTAICharacter->SetStartPoint(StartPoints[inpNumberNest]->GetTargetLocation());
-    TTAICharacter->SetEndPoint(EndPoints[inpNumberNest]->GetTargetLocation());
-    TTAICharacter->SetNubberType(inpNumberNest);
+    TTAICharacter->SetActorLocation(StartPoint);
+    TTAICharacter->SetNumberType(NumberNest);
+    TTAICharacter->SetStartPoint(StartPoint);
+    TTAICharacter->SetEndPoint(EndPoint);
 }
